@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 export function GlowingCircle() {
   return (
-    <div className="relative w-[500px] h-[500px]">
+    <div className="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px]">
       {/* Основной круг с градиентом */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}

@@ -130,4 +130,36 @@
 
 .hover-glow:hover::after {
   opacity: 0.2;
+}
+
+/* Terminal-like text effects */
+.terminal-text {
+  font-family: 'Fira Code', monospace;
+  position: relative;
+}
+
+.terminal-text::before {
+  content: '>';
+  color: rgba(0, 178, 255, 0.5);
+  margin-right: 0.5rem;
+}
+
+/* Matrix-like animation */
+@keyframes matrix-effect {
+  0% {
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
+    color: #00ff00;
+  }
+  50% {
+    text-shadow: 0 0 12px rgba(0, 255, 0, 0.4);
+    color: #00cc00;
+  }
+  100% {
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
+    color: #00ff00;
+  }
+}
+
+.matrix-glow {
+  animation: matrix-effect 2s infinite;
 } 
