@@ -72,7 +72,7 @@ export function Services() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
+          {services.map((service) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 20 }}

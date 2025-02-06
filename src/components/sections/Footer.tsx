@@ -1,11 +1,8 @@
 'use client'
 
 import { motion } from "framer-motion"
-import { Github, Twitter, Linkedin, Mail, Terminal, Cpu } from "lucide-react"
-import Link from "next/link"
+import { Github, Twitter, Linkedin, Mail, Terminal } from "lucide-react"
 import { useState, useEffect } from "react"
-import { ScrollLink } from "../ui/ScrollLink"
-import { useActiveSection } from "@/hooks/useActiveSection"
 
 const socialLinks = [
   { icon: Github, href: "https://github.com", label: "GitHub" },
@@ -28,30 +25,30 @@ function useRandomQuote() {
   });
   const [isLoading, setIsLoading] = useState(true);
 
-  const quotes = [
-    {
-      text: "Программирование - это искусство создавать невозможное",
-      author: "Цифровой философ"
-    },
-    {
-      text: "В мире кода каждая строка имеет значение",
-      author: "Мудрый разработчик"
-    },
-    {
-      text: "Баги - это не ошибки, а неожиданные возможности",
-      author: "Оптимист-программист"
-    },
-    {
-      text: "Чистый код сегодня - спокойный сон завтра",
-      author: "Опытный разработчик"
-    },
-    {
-      text: "Каждая строка кода - это шаг к совершенству",
-      author: "Цифровой архитектор"
-    }
-  ];
-
   useEffect(() => {
+    const quotes = [
+      {
+        text: "Программирование - это искусство создавать невозможное",
+        author: "Цифровой философ"
+      },
+      {
+        text: "В мире кода каждая строка имеет значение",
+        author: "Мудрый разработчик"
+      },
+      {
+        text: "Баги - это не ошибки, а неожиданные возможности",
+        author: "Оптимист-программист"
+      },
+      {
+        text: "Чистый код сегодня - спокойный сон завтра",
+        author: "Опытный разработчик"
+      },
+      {
+        text: "Каждая строка кода - это шаг к совершенству",
+        author: "Цифровой архитектор"
+      }
+    ];
+
     // Имитация API запроса
     setIsLoading(true);
     const randomIndex = Math.floor(Math.random() * quotes.length);
@@ -64,19 +61,9 @@ function useRandomQuote() {
   return { quote, isLoading };
 }
 
-// Обновим массив навигационных ссылок
-const navigationLinks = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
-  { href: '#portfolio', label: 'Portfolio' },
-  { href: '#experience', label: 'Experience' },
-]
-
 export function Footer() {
   const { quote, isLoading } = useRandomQuote();
-  const activeSection = useActiveSection();
-
+  
   return (
     <footer className="relative overflow-hidden border-t border-primary/20">
       {/* Background Elements */}
@@ -156,8 +143,8 @@ export function Footer() {
                 />
               </span>
             </motion.div>
-            <p className="text-gray-400 text-sm relative">
-              <span className="text-primary/60 font-mono">$</span> echo "Creating digital experiences with code"
+            <p className="text-gray-400 text-sm">
+              <span className="text-primary/60">$</span> echo &ldquo;Creating digital experiences with code&rdquo;
             </p>
           </div>
 
@@ -299,31 +286,6 @@ export function Footer() {
               </div>
             </div>
           </div>
-
-          {/* Navigation Links */}
-          {/* <div className="space-y-4">
-            <h3 className="text-primary font-mono flex items-center gap-2">
-              <Terminal className="w-4 h-4" />
-              Navigation
-            </h3>
-            <ul className="space-y-2">
-              {navigationLinks.map((item) => (
-                <motion.li
-                  key={item.href}
-                  className="text-gray-400 hover:text-primary transition-colors"
-                >
-                  <ScrollLink
-                    href={item.href}
-                    isActive={activeSection === item.href.replace('#', '')}
-                    className="flex items-center gap-2 px-2 py-1 rounded-lg hover:bg-primary/5 transition-colors cursor-pointer"
-                  >
-                    <span className="text-primary/60 font-mono">&gt;</span>
-                    {item.label}
-                  </ScrollLink>
-                </motion.li>
-              ))}
-            </ul>
-          </div> */}
         </div>
 
         {/* Animated Separator */}

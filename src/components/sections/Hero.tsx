@@ -3,42 +3,11 @@
 import { motion } from "framer-motion"
 import { Button } from "../ui/Button"
 import { GlowingCircle } from "../ui/GlowingCircle"
-import Image from "next/image"
 import { TechIcons } from "../ui/TechIcons"
-import { Code2, Layout, MonitorSmartphone } from "lucide-react"
-import { useEffect, useState } from "react"
-import avatarImage from "../../../public/images/photo_2025-02-06_23-19-06.jpg"
+import { useState, useEffect } from "react"
+
 const colors = {
   primary: 'rgb(0, 178, 255)',
-}
-
-// Хакерская анимация для букв
-const hackerLetterAnimation = {
-  initial: { 
-    opacity: 0,
-    y: 20,
-    color: '#00ff00',
-    textShadow: '0 0 8px #00ff00'
-  },
-  animate: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    color: '#00B2FF',
-    textShadow: '0 0 4px rgba(0, 178, 255, 0.5)',
-    transition: {
-      delay: i * 0.1,
-      duration: 0.5,
-      ease: [0.33, 1, 0.68, 1],
-    }
-  }),
-  hover: {
-    color: '#00ff00',
-    textShadow: '0 0 8px #00ff00',
-    y: -5,
-    transition: {
-      duration: 0.2,
-    }
-    }
 }
 
 // Добавим функцию для генерации бинарного кода

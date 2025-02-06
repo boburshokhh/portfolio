@@ -78,7 +78,7 @@ export function Header() {
 
           {/* Навигация */}
           <nav className="hidden md:flex items-center space-x-8">
-            {menuItems.map((item, index) => (
+            {menuItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
