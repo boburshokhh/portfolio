@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "set NODE_OPTIONS=--openssl-legacy-provider && next dev",
-    "build": "set NODE_OPTIONS=--openssl-legacy-provider && next build",
-    "start": "set NODE_OPTIONS=--openssl-legacy-provider && next start",
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@netlify/plugin-nextjs": "^5.9.4",
     "@types/gsap": "^3.0.0",
     "@types/node": "^20",
     "@types/react": "^19",

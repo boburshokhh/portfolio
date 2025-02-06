@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
-  outputFileTracingExcludes: {
-    '*': [
-      'node_modules/**/*.js',
-      '.next/cache/**/*',
-    ],
+  output: 'export',
+  images: {
+    unoptimized: true
   },
+  distDir: 'out'
 }
 
 module.exports = nextConfig 
