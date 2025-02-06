@@ -19,6 +19,7 @@ module.exports = {
       colors: {
         'primary': '#00B2FF', // The blue color from the design
         'background': '#1A1A1A', // Dark background
+        'foreground': 'hsl(var(--foreground))',
       },
       keyframes: {
         "accordion-down": {
