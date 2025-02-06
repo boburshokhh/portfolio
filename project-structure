@@ -1,0 +1,15 @@
+portfolio-website/
+├── src/
+│   ├── components/
+│   │   ├── ui/           # shadcn/ui components
+│   │   ├── layout/       # Layout components
+│   │   └── sections/     # Page sections
+│   ├── styles/
+│   │   └── globals.css   # Global styles
+│   ├── lib/
+│   │   └── utils.ts      # Utility functions
+│   └── app/
+│       └── page.tsx      # Main page
+├── public/
+│   └── images/          # Images and assets
+└── tailwind.config.js   # Tailwind configuration 
