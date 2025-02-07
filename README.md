@@ -3,7 +3,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ## Getting Started
 ## Demo
 
-Check out the live demo of this portfolio website at [portfolio-ochre-iota-89.vercel.app](https://portfolio-ochre-iota-89.vercel.app)
+Check out the live demo of this portfolio website at [demo](https://me-bobur-portfolio.netlify.app/)
 
 First, run the development server:
 
