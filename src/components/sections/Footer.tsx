@@ -230,7 +230,7 @@ export function Footer() {
 
           {/* Social Links */}
           <div className="space-y-4">
-            <h3 className="text-primary font-mono">Connect</h3>
+            <h3 className="text-primary font-mono">Соединяйтесь со мной</h3>
             <div className="flex flex-wrap gap-3">
               {socialLinks.map((social) => (
                 <motion.a
@@ -276,7 +276,7 @@ export function Footer() {
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(0,178,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,178,255,0.02)_1px,transparent_1px)] bg-[size:16px_16px]" />
                 <div className="relative">
                   <TypewriterText text="$ contact me" delay={0} />
-                  <TypewriterText text="example@mail.com" delay={1} className="text-primary" />
+                  <TypewriterText text="boburboy200216@mail.ru" delay={1} className="text-primary" />
                   <motion.div
                     animate={{ opacity: [1, 0] }}
                     transition={{ duration: 1, repeat: Infinity }}
@@ -311,14 +311,14 @@ export function Footer() {
             animate={{ opacity: 1 }}
             className="text-gray-400 text-sm"
           >
-            <span className="text-primary/60">©</span> {new Date().getFullYear()} netronic. All rights reserved.
+            <span className="text-primary/60">©</span> {new Date().getFullYear()} me_bobur. All rights reserved.
           </motion.p>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="text-gray-400 text-sm font-mono"
           >
-            <span className="text-primary/60">&lt;/&gt;</span> with 💙 by Gleb Kostrubov
+            <span className="text-primary/60">&lt;/&gt;</span> with 💙 by Bobur
           </motion.p>
         </div>
       </div>
