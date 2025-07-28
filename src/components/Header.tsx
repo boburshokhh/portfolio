@@ -52,22 +52,30 @@ export function Header() {
               BOBUR.DEV
               <motion.span
                 className="absolute left-0 right-0 text-[#ff0000] mix-blend-screen"
-                style={{
+                animate={{
                   opacity: activeGlitch ? 0.5 : 0,
-                  transform: `translate(${activeGlitch ? Math.random() * 4 - 2 : 0}px, ${
-                    activeGlitch ? Math.random() * 4 - 2 : 0
-                  }px)`,
+                  x: activeGlitch ? [-2, 2] : 0,
+                  y: activeGlitch ? [-2, 2] : 0,
+                }}
+                transition={{
+                  duration: 0.1,
+                  repeat: activeGlitch ? Infinity : 0,
+                  repeatType: "reverse"
                 }}
               >
                 BOBUR.DEV
               </motion.span>
               <motion.span
                 className="absolute left-0 right-0 text-[#00ff00] mix-blend-screen"
-                style={{
+                animate={{
                   opacity: activeGlitch ? 0.5 : 0,
-                  transform: `translate(${activeGlitch ? Math.random() * 4 - 2 : 0}px, ${
-                    activeGlitch ? Math.random() * 4 - 2 : 0
-                  }px)`,
+                  x: activeGlitch ? [-2, 2] : 0,
+                  y: activeGlitch ? [-2, 2] : 0,
+                }}
+                transition={{
+                  duration: 0.1,
+                  repeat: activeGlitch ? Infinity : 0,
+                  repeatType: "reverse"
                 }}
               >
                 BOBUR.DEV

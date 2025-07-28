@@ -51,7 +51,7 @@ function useRandomQuote() {
 
     // Имитация API запроса
     setIsLoading(true);
-    const randomIndex = Math.floor(Math.random() * quotes.length);
+    const randomIndex = Math.floor((Date.now() % quotes.length));
     setTimeout(() => {
       setQuote(quotes[randomIndex]);
       setIsLoading(false);
@@ -77,17 +77,17 @@ export function Footer() {
             key={i}
             className="absolute w-1 h-1 bg-primary/20 rounded-full"
             style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
+              top: `${(i * 6.67) % 100}%`,
+              left: `${(i * 8.33) % 100}%`,
             }}
             animate={{
               y: [0, -30, 0],
-              x: [0, Math.random() * 30 - 15, 0],
+              x: [0, (i % 3 - 1) * 15, 0],
               opacity: [0.2, 0.5, 0.2],
               scale: [1, 1.5, 1],
             }}
             transition={{
-              duration: 4 + Math.random() * 2,
+              duration: 4 + (i % 3),
               repeat: Infinity,
               ease: "easeInOut",
             }}

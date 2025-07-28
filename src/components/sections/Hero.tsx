@@ -40,7 +40,7 @@ export function Hero() {
         text: generateBinaryString(Math.floor(Math.random() * 20) + 10),
         x: Math.random() * 100,
         y: Math.random() * 100,
-        id: Date.now() + Math.random()
+        id: Date.now() + Math.random() * 1000
       }
       setBinaryLines(prev => [...prev.slice(-50), newLine]) // Храним последние 50 строк
     }, 200)
@@ -134,7 +134,7 @@ export function Hero() {
             </motion.div>
           </motion.h1>
           
-          <motion.p
+          <motion.div
             className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 relative group font-mono"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -156,7 +156,7 @@ export function Hero() {
             />
             <span className="text-primary/50">{'>'}</span> Я занимаюсь веб-дизайном, фронтендом и бэкендом уже более года. 
             Нужно ли вам дизайн сайта, верстка или возможно полноценный сайт? Тогда свяжитесь со мной.
-          </motion.p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}

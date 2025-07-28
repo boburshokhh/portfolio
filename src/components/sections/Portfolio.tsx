@@ -156,19 +156,19 @@ export function Portfolio() {
                 key={i}
                 className="absolute w-1 h-1 bg-primary/20 rounded-full"
                 style={{
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
+                  top: `${(i * 5) % 100}%`,
+                  left: `${(i * 7) % 100}%`,
                 }}
                 animate={{
                   y: [0, -20, 0],
-                  x: [0, Math.random() * 20 - 10, 0],
+                  x: [0, (i % 3 - 1) * 10, 0],
                   opacity: [0.2, 0.5, 0.2],
                   scale: [1, 1.2, 1],
                 }}
                 transition={{
-                  duration: 3 + Math.random() * 2,
+                  duration: 3 + (i % 3),
                   repeat: Infinity,
-                  delay: Math.random() * 2,
+                  delay: i * 0.1,
                 }}
               />
             ))}

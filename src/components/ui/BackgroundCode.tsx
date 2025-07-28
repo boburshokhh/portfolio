@@ -34,11 +34,15 @@ export function BackgroundCode() {
   }, [])
 
   // Генерируем статический фоновый код
-  const backgroundCode = Array.from({ length: 30 }, (_, i) => ({
-    text: codeSnippets[i % codeSnippets.length],
-    left: Math.random() * 100,
-    top: Math.random() * 100,
-  }))
+  const [backgroundCode, setBackgroundCode] = useState<Array<{ text: string; left: number; top: number }>>([])
+
+  useEffect(() => {
+    setBackgroundCode(Array.from({ length: 30 }, (_, i) => ({
+      text: codeSnippets[i % codeSnippets.length],
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+    })))
+  }, [])
 
   // Генерируем новые строки кода при движении мыши
   useEffect(() => {
@@ -48,7 +52,7 @@ export function BackgroundCode() {
           text: codeSnippets[Math.floor(Math.random() * codeSnippets.length)],
           x: e.clientX,
           y: e.clientY,
-          id: Date.now()
+          id: Date.now() + Math.random() * 1000
         }
         setCodeLines(prev => [...prev.slice(-15), newLine]) // Уменьшили количество строк
       }
