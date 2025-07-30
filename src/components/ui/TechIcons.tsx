@@ -2,13 +2,14 @@
 
 import { motion } from "framer-motion"
 import { SiVuedotjs, SiReact, SiPostgresql, SiNodedotjs, SiExpress, SiTypescript, SiTailwindcss, SiNextdotjs, SiGit, SiDocker } from "react-icons/si"
+import { useState, useEffect } from "react"
 
 const technologies = [
   {
     icon: SiVuedotjs,
     name: "Vue.js",
     color: "#42b883",
-    position: "top-[10%] right-[15%] sm:top-[15%] sm:right-[20%]",
+    style: { top: "10%", right: "15%" },
     delay: 0.2,
     rotate: 15,
   },
@@ -16,7 +17,7 @@ const technologies = [
     icon: SiReact,
     name: "React",
     color: "#61dafb",
-    position: "top-[40%] right-[0%] sm:top-[50%] sm:right-[5%]",
+    style: { top: "40%", right: "0%" },
     delay: 0.4,
     rotate: -15,
   },
@@ -24,7 +25,7 @@ const technologies = [
     icon: SiPostgresql,
     name: "PostgreSQL",
     color: "#336791",
-    position: "bottom-[10%] right-[15%] sm:bottom-[15%] sm:right-[20%]",
+    style: { bottom: "10%", right: "15%" },
     delay: 0.6,
     rotate: -25,
   },
@@ -32,7 +33,7 @@ const technologies = [
     icon: SiNodedotjs,
     name: "Node.js",
     color: "#339933",
-    position: "top-[10%] left-[15%] sm:top-[15%] sm:left-[20%]",
+    style: { top: "10%", left: "15%" },
     delay: 0.8,
     rotate: -15,
   },
@@ -40,7 +41,7 @@ const technologies = [
     icon: SiExpress,
     name: "Express",
     color: "#ffffff",
-    position: "bottom-[10%] left-[15%] sm:bottom-[15%] sm:left-[20%]",
+    style: { bottom: "10%", left: "15%" },
     delay: 1,
     rotate: 25,
   },
@@ -48,7 +49,7 @@ const technologies = [
     icon: SiTypescript,
     name: "TypeScript",
     color: "#3178C6",
-    position: "top-[25%] left-[0%] sm:left-[5%]",
+    style: { top: "25%", left: "0%" },
     delay: 1.2,
     rotate: 20,
   },
@@ -56,7 +57,7 @@ const technologies = [
     icon: SiTailwindcss,
     name: "Tailwind CSS",
     color: "#06B6D4",
-    position: "bottom-[25%] left-[0%] sm:left-[5%]",
+    style: { bottom: "25%", left: "0%" },
     delay: 1.4,
     rotate: -20,
   },
@@ -64,7 +65,7 @@ const technologies = [
     icon: SiNextdotjs,
     name: "Next.js",
     color: "#ffffff",
-    position: "top-[25%] right-[0%] sm:right-[5%]",
+    style: { top: "25%", right: "0%" },
     delay: 1.6,
     rotate: -20,
   },
@@ -72,7 +73,7 @@ const technologies = [
     icon: SiGit,
     name: "Git",
     color: "#F05032",
-    position: "bottom-[25%] right-[0%] sm:right-[5%]",
+    style: { bottom: "25%", right: "0%" },
     delay: 1.8,
     rotate: 20,
   },
@@ -80,13 +81,23 @@ const technologies = [
     icon: SiDocker,
     name: "Docker",
     color: "#2496ED",
-    position: "bottom-[50%] left-[0%] sm:left-[5%]",
+    style: { bottom: "50%", left: "0%" },
     delay: 2,
     rotate: 0,
   },
 ]
 
 export function TechIcons() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return null
+  }
+
   return (
     <div className="absolute inset-0 -z-10">
       {technologies.map((tech, index) => (
@@ -100,7 +111,8 @@ export function TechIcons() {
             type: "spring",
             stiffness: 200,
           }}
-          className={`absolute ${tech.position}`}
+          className="absolute"
+          style={tech.style}
         >
           <motion.div
             whileHover={{ 
@@ -118,7 +130,7 @@ export function TechIcons() {
               duration: 5,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: index * 0.2,
+              delay: tech.delay,
               times: [0, 0.2, 0.5, 0.8, 1],
             }}
             className="relative group cursor-pointer"
@@ -133,7 +145,7 @@ export function TechIcons() {
                 duration: 2,
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: index * 0.1,
+                delay: tech.delay * 0.5,
               }}
             />
 
@@ -147,7 +159,7 @@ export function TechIcons() {
                 duration: 2,
                 repeat: Infinity,
                 ease: "easeOut",
-                delay: index * 0.1,
+                delay: tech.delay * 0.3,
               }}
             />
 

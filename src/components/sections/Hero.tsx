@@ -11,8 +11,8 @@ const colors = {
 }
 
 // Добавим функцию для генерации бинарного кода
-function generateBinaryString(length: number) {
-  return Array.from({ length }, () => Math.random() > 0.5 ? '1' : '0').join('')
+function generateBinaryString(length: number, seed: number) {
+  return Array.from({ length }, (_, i) => ((seed + i) % 2) ? '1' : '0').join('')
 }
 
 export function Hero() {
@@ -22,27 +22,38 @@ export function Hero() {
   const originalName = "Я БОБУР ТУХТАМУРОДОВ"
   
   // Эффект скремблинга текста
-  const scrambleText = (text: string) => {
+  const scrambleText = (text: string, seed: number) => {
     const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?'
     return text
       .split('')
-      .map(char => char === ' ' ? ' ' : chars[Math.floor(Math.random() * chars.length)])
+      .map((char, i) => char === ' ' ? ' ' : chars[Math.floor((seed + i) % chars.length)])
       .join('')
   }
 
-  // Добавим состояние для бинарных строк
-  const [binaryLines, setBinaryLines] = useState<Array<{ text: string; x: number; y: number; id: number }>>([])
+  // Добавим состояние для бинарных строк с детерминированным начальным состоянием
+  const [binaryLines, setBinaryLines] = useState<Array<{ text: string; x: number; y: number; id: number }>>(() => {
+    // Создаем детерминированное начальное состояние
+    return Array.from({ length: 10 }, (_, i) => ({
+      text: generateBinaryString(15, i * 1000),
+      x: Math.floor((i * 3330) % 10000) / 100, // Более точное вычисление
+      y: Math.floor((i * 2500) % 10000) / 100, // Более точное вычисление
+      id: i * 1000
+    }))
+  })
 
   // Генерируем новые бинарные строки
   useEffect(() => {
+    let counter = 0
     const interval = setInterval(() => {
+      const seed = counter + Date.now()
       const newLine = {
-        text: generateBinaryString(Math.floor(Math.random() * 20) + 10),
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        id: Date.now() + Math.random() * 1000
+        text: generateBinaryString(Math.floor((seed % 20) + 10), seed),
+        x: Math.floor((seed * 333) % 10000) / 100, // Более точное вычисление
+        y: Math.floor((seed * 250) % 10000) / 100, // Более точное вычисление
+        id: seed
       }
       setBinaryLines(prev => [...prev.slice(-50), newLine]) // Храним последние 50 строк
+      counter++
     }, 200)
 
     return () => clearInterval(interval)
@@ -58,11 +69,11 @@ export function Hero() {
         if (counter < maxIterations) {
           setScrambledHello(prev => 
             prev.split('').map((char, i) => 
-              originalHello[i] === char ? char : scrambleText('X')).join('')
+              originalHello[i] === char ? char : scrambleText('X', counter + i)).join('')
           )
           setScrambledName(prev => 
             prev.split('').map((char, i) => 
-              originalName[i] === char ? char : scrambleText('X')).join('')
+              originalName[i] === char ? char : scrambleText('X', counter + i)).join('')
           )
           counter++
         } else {
@@ -240,8 +251,8 @@ export function Hero() {
                       key={line.id}
                       className="absolute font-mono text-xs sm:text-sm whitespace-nowrap"
                       style={{
-                        left: `${line.x}%`,
-                        top: `${line.y}%`,
+                  left: `${Math.floor(line.x)}%`,
+                  top: `${Math.floor(line.y)}%`,
                       }}
                       initial={{ 
                         opacity: 0,

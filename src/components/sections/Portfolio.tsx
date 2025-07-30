@@ -156,8 +156,8 @@ export function Portfolio() {
                 key={i}
                 className="absolute w-1 h-1 bg-primary/20 rounded-full"
                 style={{
-                  top: `${(i * 5) % 100}%`,
-                  left: `${(i * 7) % 100}%`,
+                  top: `${Math.floor((i * 500) % 10000) / 100}%`,
+                  left: `${Math.floor((i * 700) % 10000) / 100}%`,
                 }}
                 animate={{
                   y: [0, -20, 0],

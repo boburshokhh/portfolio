@@ -51,7 +51,7 @@ function useRandomQuote() {
 
     // Имитация API запроса
     setIsLoading(true);
-    const randomIndex = Math.floor((Date.now() % quotes.length));
+    const randomIndex = Math.floor((Date.now() / 1000) % quotes.length); // Используем секунды вместо миллисекунд
     setTimeout(() => {
       setQuote(quotes[randomIndex]);
       setIsLoading(false);
@@ -77,8 +77,8 @@ export function Footer() {
             key={i}
             className="absolute w-1 h-1 bg-primary/20 rounded-full"
             style={{
-              top: `${(i * 6.67) % 100}%`,
-              left: `${(i * 8.33) % 100}%`,
+              top: `${Math.floor((i * 667) % 10000) / 100}%`,
+              left: `${Math.floor((i * 833) % 10000) / 100}%`,
             }}
             animate={{
               y: [0, -30, 0],
@@ -331,7 +331,7 @@ function TypewriterText({ text, delay, className = "" }: { text: string; delay: 
   const letters = text.split("")
   
   return (
-    <p className={className}>
+    <div className={className}>
       {letters.map((letter, index) => (
         <motion.span
           key={index}
@@ -346,6 +346,6 @@ function TypewriterText({ text, delay, className = "" }: { text: string; delay: 
           {letter}
         </motion.span>
       ))}
-    </p>
+    </div>
   )
 } 
